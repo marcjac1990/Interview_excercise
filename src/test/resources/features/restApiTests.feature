@@ -10,3 +10,8 @@ Feature: Rest API Tests
     When Create Employee with name "Marcin", Salary "3000" and Age "22"
     Then Check if response code is 200
 
+  Scenario: Rest DELETE Test
+    Given Set URL to connect to API "http://dummy.restapiexample.com/api/v1/"
+    When Get list of all employee
+    When Remove Employee "Bradley Greer"
+    Then Check if response code is 200

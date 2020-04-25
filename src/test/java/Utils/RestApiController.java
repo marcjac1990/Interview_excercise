@@ -1,7 +1,12 @@
 package Utils;
 
+import com.google.gson.*;
+import com.google.gson.stream.JsonReader;
+import io.cucumber.datatable.dependency.com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 import net.serenitybdd.rest.SerenityRest;
+import org.junit.Assert;
+import org.openqa.selenium.json.Json;
 
 public class RestApiController {
     Employee employee;
@@ -37,5 +42,26 @@ public class RestApiController {
     public void createEmployee(String request)
     {
         response = SerenityRest.given().body(request).post(api + "create");
+    }
+
+    public Data findEmployee(String employeeToFind)
+    {
+        Gson gson = new Gson();
+        String resp = response.getBody().asString();
+        AllEmployeeResponsePattern model = gson.fromJson(resp, AllEmployeeResponsePattern.class);
+        for (Data employee: model.data) {
+            if (employee.employee_name.contains(employeeToFind))
+            {
+                return employee;
+            }
+        }
+        return new Data();
+    }
+
+    public void deleteEmployee(Data employee)
+    {
+        Assert.assertNotNull("Cannot Find user", employee.employee_name);
+        String deleteUrl = api + "delete/" + employee.id;
+        response = SerenityRest.given().delete(deleteUrl);
     }
 }

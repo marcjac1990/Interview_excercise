@@ -22,8 +22,12 @@ public class restApiTestSteps {
     }
 
     @Then("Check if response code is 200")
-    public void checkResposneCode() { restApiController.checkResponseCode(200); }
+    public void checkResposneCode() { restApiController.checkResponseCode(200);}
+
 
     @When("^Create Employee with name \"([^\"]*)\", Salary \"([^\"]*)\" and Age \"([^\"]*)\"$")
     public void createEmployeeWithNameSalaryAndAge(String name, String salary, String age) { restApiController.createEmployee(restApiController.createRequestToAddNewEmployee(name, salary, age)); }
+
+    @When("Remove Employee \"([^\"]*)\"")
+    public void remoteEmployer(String employee) { restApiController.deleteEmployee(restApiController.findEmployee(employee)); }
 }

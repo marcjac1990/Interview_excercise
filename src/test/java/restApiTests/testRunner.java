@@ -5,5 +5,5 @@ import org.junit.runner.RunWith;
 import io.cucumber.junit.CucumberOptions;
 
 @RunWith(CucumberWithSerenity.class)
-@CucumberOptions(plugin = {"pretty"}, features="classpath:features", glue="restApiTests")
+@CucumberOptions(plugin="pretty", features="classpath:features", glue="restApiTests")
 public class testRunner { }
