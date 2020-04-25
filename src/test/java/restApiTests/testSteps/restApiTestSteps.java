@@ -1,12 +1,9 @@
 package restApiTests.testSteps;
 
-import Utils.Employee;
 import Utils.RestApiController;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
-import io.restassured.response.Response;
-import net.serenitybdd.rest.SerenityRest;
 
 
 

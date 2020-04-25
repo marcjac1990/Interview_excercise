@@ -1,12 +1,9 @@
 package Utils;
 
 import com.google.gson.*;
-import com.google.gson.stream.JsonReader;
-import io.cucumber.datatable.dependency.com.fasterxml.jackson.databind.ObjectMapper;
 import io.restassured.response.Response;
 import net.serenitybdd.rest.SerenityRest;
 import org.junit.Assert;
-import org.openqa.selenium.json.Json;
 
 public class RestApiController {
     Employee employee;
